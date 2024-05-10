@@ -1,0 +1,37 @@
+std := import('std')
+
+fn Transition(color_, tw) {
+
+  color_ := color_ |> std.default(BLACK)
+  tw := tw |> std.default(easings.easeOutSine)
+
+  self := {}
+
+  fn createFG {
+    add([
+      rect(width(), height())
+      color(0, 0, 0)
+      opacity(1)
+    ])
+  }
+
+  self.tr <- createFG()
+
+  fn makeTransition(speed, color) {
+    self.tr.opacity <- 0
+    if color != ? -> self.tr.use(color)
+
+    with self.tr.use() fadeIn(speed)
+  }
+
+  self.fadeIn := fn(speed, color) {
+    makeTransition(speed, color)
+  }
+
+  self.fadeOut := fn(speed, color) {
+    if color != ? -> self.tr.use(color)
+    self.tr.fadeOut(speed)
+  }
+
+  self
+}

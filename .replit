@@ -33,7 +33,7 @@ requiredFiles = [".replit", "replit.nix", ".config"]
 [languages]
 
 [languages.javascript]
-pattern = "**/{*.js,*.jsx,*.ts,*.tsx,*.oak}"
+pattern = "**/{*.js,*.jsx,*.ts,*.tsx}"
 
 [languages.javascript.languageServer]
 start = "typescript-language-server --stdio"

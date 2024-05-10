@@ -1,0 +1,32 @@
+// @SPCFORK BOOT
+
+gwibble := loadFont(
+  'gwibble' |> s()
+  '/fonts/gwibble/font.ttf' |> s()
+)
+
+spr := OKloadSprite(
+  'bean'
+  '/sprites/bean.png'
+)
+
+// ---
+
+{
+  Transition: Transition
+} := import('../blocks/Transition')
+
+// ---
+
+with scene('game') fn {
+
+  bean := add([
+    sprite(spr)
+    pos()
+    area()
+    body()
+    opacity()
+  ])
+  
+}
+
